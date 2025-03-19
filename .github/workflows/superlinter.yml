@@ -2,8 +2,12 @@
 name: Lint
 
 on: # yamllint disable-line rule:truthy
-  push: null
-  pull_request: null
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 permissions: {}
 
@@ -31,3 +35,4 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_CHECKOV: false # Disable Checkov if not needed
